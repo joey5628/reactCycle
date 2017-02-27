@@ -5,10 +5,10 @@ const config = require('./config')
 
 
 // px2rem
-  const px2remConfig = Object.assign({
-    remUnit     : 75,
-    remPrecision: 8,
-  }, config.px2rem);
+const px2remConfig = Object.assign({
+  remUnit     : 75,
+  remPrecision: 8,
+}, config.px2rem);
 
 module.exports = {
   entry: {
