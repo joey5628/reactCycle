@@ -12,8 +12,12 @@ const px2remConfig = Object.assign({
 
 module.exports = {
   entry: {
-    'app': ['./src/main.js'],
-    'vendor': ['react', 'react-dom']
+    'app': ['./src/app.js'],
+    'vendor': [
+      'react',
+      'react-dom',
+      'react-router'
+    ]
   },
   output: {
     path: path.resolve(__dirname, '../tmp'),

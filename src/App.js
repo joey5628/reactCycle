@@ -1,14 +1,15 @@
-import './assets/css/app.less'
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import ReactDom from 'react-dom'
+import { Router, hashHistory } from 'react-router'
+import routes from './routes'
+import 'normalize.css'
+import './assets/css/base.less'
 
-export default class App extends Component {
-  constructor (props) {
-    super(props)
-  }
-
-  render () {
-    return (
-      <div>skillful</div>
+if (window && document) {
+  window.onload = () => {
+    ReactDom.render(
+      <Router history={hashHistory} routes={routes}></Router>,
+      document.getElementById('root')
     )
   }
 }

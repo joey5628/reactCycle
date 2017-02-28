@@ -26,7 +26,7 @@ module.exports = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       title: config.title,
-      filename: 'html/index.[hash:4].html',
+      filename: 'index.[hash:4].html',
       template: 'index.html'
     })
   ]
