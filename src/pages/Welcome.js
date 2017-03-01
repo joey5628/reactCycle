@@ -11,6 +11,11 @@ const Welcome = () => (
         className="nav-link">
         蒙板
       </Link>
+      <Link
+        to="/demo/animation"
+        className="nav-link">
+        animation
+      </Link>
     </div>
   </div>
 )

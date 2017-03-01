@@ -25,7 +25,7 @@ class Mask extends Component {
       [`${prefixCls}-hidden`]: !isShow,
       [`${prefixCls}-transparent`]: transparent
     })
-    
+
     return (
       <div className={className} {...others}></div>
     )
