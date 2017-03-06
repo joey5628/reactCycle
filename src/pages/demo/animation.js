@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import Animation from '../../components/Animation';
 import classNames from 'classnames'
 import './style/animationDemo.less'
 
@@ -17,25 +18,44 @@ class AnimationDemo extends Component {
     })
   }
 
+  componentDidMount () {
+    console.log(111)
+    console.log(this.group)
+    console.log(this.group.props.children)
+    console.log(React.isValidElement(this.group.props.children))
+    React.Children.forEach(this.group.props.children, (child) => {
+      console.log(child)
+      console.log(child.key)
+    })
+  }
+
+  componentDidUpdate () {
+    console.log(222)
+    console.log(this.group.props.children)
+    console.log(React.isValidElement(this.group.props.children))
+  }
+
   render () {
     let className = classNames({
       'animation-item': true,
       show: this.state.isShow
     })
-    let node = this.state.isShow ? (
-      <div className={className}>
+    let node = []
+    for(let i = 0; i < 2; i++) {
+      node.push(<div className={className} key={i}>
         这是一个测试啊
-      </div>) : null
+      </div>)
+    }
     return (
       <div>
         <button type="button" onClick={this.handleTest.bind(this)}>点击</button>
-        <ReactCSSTransitionGroup
-          component="div"
-          transitionName="example"
+        <Animation ref={(c) => { this.group = c }}
+          transitionName="fade"
           transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
-          {node}
-        </ReactCSSTransitionGroup>
+          transitionAppearTimeout={500}
+          transitionLeaveTimeout={500}>
+          {this.state.isShow ? node : null}
+        </Animation>
       </div>
     )
   }
