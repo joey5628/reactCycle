@@ -9,33 +9,40 @@ import './style/index.less'
 class Mask extends Component {
 
   static propTypes = {
-    transparent: React.PropTypes.bool,
-    isShow: React.PropTypes.bool,
+    transition: React.PropTypes.bool,
+    visible: React.PropTypes.bool,
     prefixCls: React.PropTypes.string,
     handleClick: React.PropTypes.func,
+    transitionName: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ])
   }
 
   static defaultProps = {
-    transparent: false,
-    isShow: true,
+    transition: true,
+    visible: true,
     prefixCls: 'zy-mask',
-    handleClick: function () {}
+    handleClick: function () {},
+    transitionName: 'zy-zoom'
   }
 
   render () {
-    const {transparent, isShow, prefixCls, handleClick, ...others} = this.props
-    console.log(handleClick)
+    const {visible, prefixCls, handleClick, ...others} = this.props
+    delete others.transition
+    delete others.transitionName
     const className = classNames({
-      [`${prefixCls}`]: true,
-      [`${prefixCls}-transparent`]: transparent
+      [`${prefixCls}`]: true
     })
-    let node = isShow ? <div className={className} {...others} onClick={handleClick}></div> : null
+    let node = visible ? <div className={className} {...others} onClick={handleClick}></div> : null
 
-    return (
+    node = this.props.transition ? (
       <Animation>
         {node}
       </Animation>
-    )
+    ) : node
+
+    return node
   }
 }
 

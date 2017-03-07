@@ -28,7 +28,7 @@ class Animation extends Component {
 
   static defaultProps = {
     component: 'span',
-    transitionName: 'zoom',
+    transitionName: 'zy-zoom',
     transitionEnter: true,
     transitionAppear: false,
     transitionLeave: true,

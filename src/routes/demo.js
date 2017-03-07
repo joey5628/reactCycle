@@ -8,6 +8,10 @@ export default {
     {
       path: 'animation',
       component: require('../pages/demo/animation.js').default
+    },
+    {
+      path: 'modal',
+      component: require('../pages/demo/modal.js').default
     }
   ]
 }

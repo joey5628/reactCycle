@@ -1,36 +1,39 @@
+@prefixCls: zy;
+
 .motion-common(@duration) {
   animation-duration: @duration;
   animation-fill-mode: both;
 }
-
-.fade-enter {
-  opacity: 0;
-  .motion-common(.3s);
-  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
-  animation-play-state: paused;
-}
-.fade-appear {
-  opacity: 0;
-  .motion-common(.3s);
-  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
-  animation-play-state: paused;
-}
-.fade-leave {
-  .motion-common(.3s);
-  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
-  animation-play-state: paused;
-}
-.fade-enter.fade-enter-active {
-  animation-name: fadeIn;
-  animation-play-state: running;
-}
-.fade-appear.fade-appear-active {
-  animation-name: fadeIn;
-  animation-play-state: running;
-}
-.fade-leave.fade-leave-active {
-  animation-name: fadeOut;
-  animation-play-state: running;
+.@{prefixCls} {
+  &-fade-enter {
+    opacity: 0;
+    .motion-common(.3s);
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+    animation-play-state: paused;
+  }
+  &-fade-appear {
+    opacity: 0;
+    .motion-common(.3s);
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+    animation-play-state: paused;
+  }
+  &-fade-leave {
+    .motion-common(.3s);
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+    animation-play-state: paused;
+  }
+  &-fade-enter&-fade-enter-active {
+    animation-name: fadeIn;
+    animation-play-state: running;
+  }
+  &-fade-appear&-fade-appear-active {
+    animation-name: fadeIn;
+    animation-play-state: running;
+  }
+  &-fade-leave&-fade-leave-active {
+    animation-name: fadeOut;
+    animation-play-state: running;
+  }
 }
 
 @keyframes fadeIn {
@@ -51,36 +54,38 @@
   }
 }
 
+.@{prefixCls} {
+  &-zoom-enter {
+    opacity: 0;
+    .motion-common(.1s);
+    animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+    animation-play-state: paused;
+  }
+  &-zoom-appear {
+    opacity: 0;
+    .motion-common(.1s);
+    animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+    animation-play-state: paused;
+  }
+  &-zoom-leave {
+    .motion-common(.1s);
+    animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+    animation-play-state: paused;
+  }
+  &-zoom-enter&-zoom-enter-active {
+    animation-name: zoomIn;
+    animation-play-state: running;
+  }
+  &-zoom-appear&-zoom-appear-active {
+    animation-name: zoomIn;
+    animation-play-state: running;
+  }
+  &-zoom-leave&-zoom-leave-active {
+    animation-name: zoomOut;
+    animation-play-state: running;
+  }
+}
 
-.zoom-enter {
-  opacity: 0;
-  .motion-common(.1s);
-  animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
-  animation-play-state: paused;
-}
-.zoom-appear {
-  opacity: 0;
-  .motion-common(.1s);
-  animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
-  animation-play-state: paused;
-}
-.zoom-leave {
-  .motion-common(.1s);
-  animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
-  animation-play-state: paused;
-}
-.zoom-enter.zoom-enter-active {
-  animation-name: zoomIn;
-  animation-play-state: running;
-}
-.zoom-appear.zoom-appear-active {
-  animation-name: zoomIn;
-  animation-play-state: running;
-}
-.zoom-leave.zoom-leave-active {
-  animation-name: zoomOut;
-  animation-play-state: running;
-}
 @keyframes zoomIn {
   0% {
     opacity: 0;

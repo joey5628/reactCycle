@@ -21,7 +21,7 @@ class maskDemo extends Component {
     return (
       <div>
         <button type="button" className="btn" onClick={this.toggle.bind(this)}>打开蒙板</button>
-        <Mask isShow={this.state.isShow} handleClick={this.toggle.bind(this)}>
+        <Mask visible={this.state.isShow} handleClick={this.toggle.bind(this)} transition={true}>
           <span>111</span>
         </Mask>
       </div>

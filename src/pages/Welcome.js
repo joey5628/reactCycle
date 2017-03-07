@@ -16,6 +16,11 @@ const Welcome = () => (
         className="nav-link">
         animation
       </Link>
+      <Link
+        to="/demo/modal"
+        className="nav-link">
+        modal
+      </Link>
     </div>
   </div>
 )
