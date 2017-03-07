@@ -4,6 +4,7 @@ import React, {
   ReactNode
 } from 'react'
 import Mask from '../Mask/index'
+import Animation from '../Animation'
 import LazyRenderBox from './LazyRenderBox'
 
 function noop () {}
@@ -32,8 +33,8 @@ class Modal extends Component {
     maskStyle: PropTypes.object,
     children: PropTypes.any,
     visible: PropTypes.bool,
-    title: ReactNode,
-    footer: ReactNode,
+    title: PropTypes.element,
+    footer: PropTypes.element,
     wrapClassName: PropTypes.string,
     onShow: PropTypes.func,
     onClose: PropTypes.func
@@ -47,9 +48,9 @@ class Modal extends Component {
     animation: 'zoom',
     mask: true,
     maskTransition: true,
-    maskTransitionName: 'zoom',
+    maskTransitionName: 'zy-zoom',
     maskTransitionTimeout: 100,
-    zIndex: 999,
+    zIndex: undefined,
     maskStyle: null,
     visible: false,
     title: null,
@@ -63,7 +64,8 @@ class Modal extends Component {
     const props = this.props
     let maskElement
     if (props.mask) {
-      const maskTransition = this.getMaskTransitionName()
+      const maskTransition = props.maskTransition
+      const maskTransitionName = this.getMaskTransitionName()
       maskElement = (
         <LazyRenderBox
           key='maks'
@@ -73,20 +75,22 @@ class Modal extends Component {
           visible={props.visible}
         ></LazyRenderBox>
       )
+
+      if (maskTransition) {
+        maskElement = (
+          <Animation
+            key="mask"
+            transitionName={maskTransitionName}
+            transitionEnterTimeout={props.maskTransitionTimeout}
+            transitionAppearTimeout={props.maskTransitionTimeout}
+            transitionLeaveTimeout={props.maskTransitionTimeout}
+          >
+            {maskElement}
+          </Animation>
+        )
+      }
     }
-    if (maskTransition) {
-      maskElement = (
-        <Animation
-          key="mask"
-          transitionName={props.maskTransitionName}
-          transitionEnterTimeout={props.maskTransitionTimeout}
-          transitionAppearTimeout={props.maskTransitionTimeout}
-          transitionLeaveTimeout={props.maskTransitionTimeout}
-        >
-          {maskElement}
-        </Animation>
-      )
-    }
+
     return maskElement
   }
 
@@ -139,3 +143,5 @@ class Modal extends Component {
     )
   }
 }
+
+export default Modal

@@ -13,10 +13,10 @@ class LazyRenderBox extends Component {
       className += ` ${this.props.hiddenClassName}`
     }
 
-    const props = this.props
+    let props = Object.assign({}, this.props)
     delete props.hiddenClassName
     delete props.visible
-    props.classname = className
+    props.className = className
 
     return <div {...props}></div>
   }
