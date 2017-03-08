@@ -38,11 +38,11 @@ class AnimationDemo extends Component {
   render () {
     let className = classNames({
       'animation-item': true,
-      show: this.state.isShow
+      'show': this.state.isShow
     })
     let node = []
     for(let i = 0; i < 2; i++) {
-      node.push(<div className={className} key={i}>
+      node.push(<div className={className} key={`key-${i}`}>
         这是一个测试啊
       </div>)
     }
@@ -50,11 +50,14 @@ class AnimationDemo extends Component {
       <div>
         <button type="button" onClick={this.handleTest.bind(this)}>点击</button>
         <Animation ref={(c) => { this.group = c }}
-          transitionName="fade"
+          transitionName="zy-fade"
           transitionEnterTimeout={500}
           transitionAppearTimeout={500}
           transitionLeaveTimeout={500}>
-          {this.state.isShow ? node : null}
+          {
+            node
+            //this.state.isShow ? node : null
+          }
         </Animation>
       </div>
     )

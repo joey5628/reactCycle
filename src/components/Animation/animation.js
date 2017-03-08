@@ -57,6 +57,12 @@ class Animation extends Component {
    */
   componentWillReceiveProps (nextProps) {}
 
+  /**
+   * 使用ReactCSSTransitionGroup 添加动画，
+   * 1、需要添加动画部分的节点必须在ReactCSSTransitionGroup之后添加，不能同时添加。
+   * 即必须先有ReactCSSTransitionGroup 在通过其他条件加入动画元素，才能展示动画。
+   * 2、不能通过元素的display node block的切换还展示动画
+   */
   render () {
     let {children, ...other} = this.props
     let newChildren = toArrayChildren(getChildrenFromProps(children))
