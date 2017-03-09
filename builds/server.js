@@ -13,7 +13,7 @@ const server = new webpackDevServer(complier, {
   hot: true,
   stats: { colors: true }
 }).listen(port, '0.0.0.0', function (err) {
-  console.log(`http://localhost:${port}/html/index.html`);
+  console.log('listen');
 })
 
 module.exports = server

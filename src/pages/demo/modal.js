@@ -29,7 +29,9 @@ class ModalDemo extends Component {
     })
   }
 
-  onClose () {
+  hideModal (e) {
+    console.log('onClose', e)
+    console.log('onClose', e.target)
     this.setState({
       visible: false
     })
@@ -40,11 +42,14 @@ class ModalDemo extends Component {
       <div>
         <button type="button" className="btn" onClick={this.showModal.bind(this)}>打开Modal</button>
         <Modal
+          prefixCls="zy-modal"
           visible={this.state.visible}
-          maskTransition={false}
-          onClose={this.onClose.bind(this)}
-          animation="fade"
-          transitionName="zy-fade"
+          maskTransition={true}
+          maskTransitionName="zy-fade"
+          maskTransitionTimeout={300}
+          onClose={this.hideModal.bind(this)}
+          animation="zoom"
+          transitionName="zy-zoom"
           transitionTimeout={500}>
         </Modal>
       </div>
